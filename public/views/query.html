@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>PG Web</title>
+        <script src="js/htmx.min.js"></script>
+        <script src="js/query.js"></script>
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div
+            hx-get="/list/databases"
+            hx-trigger="load"
+            hx-target="#databases"
+        ></div>
+
+        <div class="content">
+            <h2>PG Web</h2>
+            <form
+                hx-get="/execute/query"
+                hx-trigger="submit"
+                hx-encoding="json"
+                hx-swap="none"
+            >
+                <label><b>Databases</b></label>
+
+                <select id="databases" name="databases"></select>
+                <label><b>Query SQL</b></label>
+                <input
+                    class="textarea-like"
+                    id="query"
+                    name="query"
+                    type="text"
+                />
+                <button class="button">Execute</button>
+            </form>
+
+            <div id="content"></div>
+        </div>
+    </body>
+</html>
